@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AbstractFactoryPatterns.Color;
+﻿using AbstractFactoryPatterns.Color;
 using AbstractFactoryPatterns.Shape;
+using System;
 
 namespace AbstractFactoryPatterns.Factory
 {
-    class ColorFactory : IDrawable
+    internal class ColorFactory : IDrawable
     {
         public IColor GetColor(string color)
         {
