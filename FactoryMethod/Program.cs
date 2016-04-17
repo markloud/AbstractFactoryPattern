@@ -9,9 +9,9 @@ namespace FactoryMethod
         private static void Main(string[] args)
         {
             //get shape factory
-            ShapeFactory shapeFactory = new ShapeFactory();
+            ShapeFactory shapeFactory = new ShapeFactory(); // client knows what family of products to use
 
-            IShape shape1 = shapeFactory.GetShape("CIRCLE");
+            IShape shape1 = shapeFactory.GetShape("CIRCLE"); // implementation depends on the GetShape Factory Method
             shape1.draw();
 
             IShape shape2 = shapeFactory.GetShape("RECTANGLE");
