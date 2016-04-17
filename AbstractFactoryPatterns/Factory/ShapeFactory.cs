@@ -35,11 +35,14 @@ namespace AbstractFactoryPatterns.Factory
             Type t = null;
             foreach (var auto in autos)
             {
-                if (auto.Key.Contains(shapeType))
+                if (auto.Key.Contains(shapeType.ToUpper()))
                 {
                     t = autos[auto.Key];
                 }
             }
+
+            if (t == null)
+                throw new NotImplementedException();
 
             return Activator.CreateInstance(t) as IShape;
         }

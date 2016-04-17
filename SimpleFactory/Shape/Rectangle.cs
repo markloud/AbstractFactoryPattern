@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AbstractFactoryPatterns.Shape
+namespace NoFactory.Shape
 {
     internal class Rectangle : IShape
     {

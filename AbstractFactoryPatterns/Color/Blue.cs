@@ -6,7 +6,7 @@ namespace AbstractFactoryPatterns.Color
     {
         public void fill()
         {
-            Console.WriteLine("Inside Blue::fill() method.");
+            Console.WriteLine("\tInside Blue::fill() method.");
         }
     }
 }

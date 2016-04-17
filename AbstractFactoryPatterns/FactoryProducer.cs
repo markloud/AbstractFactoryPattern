@@ -15,7 +15,10 @@ namespace AbstractFactoryPatterns
             {
                 return new ColorFactory();
             }
-            return null;
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

@@ -7,16 +7,16 @@ namespace FactoryMethod.Factory
 {
     internal class ShapeFactory
     {
-        private Dictionary<string, Type> autos;
+        private Dictionary<string, Type> shapes;
 
-        public ShapeFactory()
+        public ShapeFactory() // loads all instance of IShape upon construction
         {
             LoadTypesICanReturn();
         }
 
         private void LoadTypesICanReturn()
         {
-            autos = new Dictionary<string, Type>();
+            shapes = new Dictionary<string, Type>();
 
             Type[] typesInThisAssembly = Assembly.GetExecutingAssembly().GetTypes(); // use reflection to get all types in assembly
 
@@ -24,21 +24,24 @@ namespace FactoryMethod.Factory
             {
                 if (type.GetInterface(typeof(IShape).ToString()) != null)
                 {
-                    autos.Add(type.Name.ToUpper(), type); // adds the type as key & the type itself
+                    shapes.Add(type.Name.ToUpper(), type); // adds the type as key & the type itself
                 }
             }
         }
 
-        public IShape GetShape(string shapeType)
+        public IShape GetShape(string shapeType) // Factory Method
         {
             Type t = null;
-            foreach (var auto in autos)
+            foreach (var auto in shapes)
             {
-                if (auto.Key.Contains(shapeType))
+                if (auto.Key.Contains(shapeType.ToUpper()))
                 {
-                    t = autos[auto.Key];
+                    t = shapes[auto.Key];
                 }
             }
+
+            if (t == null)
+                throw new NotImplementedException();
 
             return Activator.CreateInstance(t) as IShape;
         }

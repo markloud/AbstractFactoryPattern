@@ -6,7 +6,7 @@ namespace FactoryMethod.Shape
     {
         public void draw()
         {
-            Console.WriteLine("Inside Rectangle::draw() method.");
+            Console.WriteLine("\tInside Rectangle::draw() method.");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FactoryMethod.Shape
+namespace NoFactory.Shape
 {
     internal class Circle : IShape
     {

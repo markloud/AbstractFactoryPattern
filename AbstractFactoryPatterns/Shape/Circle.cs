@@ -6,7 +6,7 @@ namespace AbstractFactoryPatterns.Shape
     {
         public void draw()
         {
-            Console.WriteLine("Inside Circle::draw() method.");
+            Console.WriteLine("\tInside Circle::draw() method.");
         }
     }
 }

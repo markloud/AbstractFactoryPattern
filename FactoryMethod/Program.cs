@@ -8,19 +8,25 @@ namespace FactoryMethod
     {
         private static void Main(string[] args)
         {
-            //get shape factory
+            // get shape factory
             ShapeFactory shapeFactory = new ShapeFactory(); // client knows what family of products to use
+            string shapeName;
+            IShape shape; // implementation depends on the GetShape Factory Method
+            
+            while (true)
+            {
+                Console.Write("Enter shape: ");
+                shapeName = Console.ReadLine();
 
-            IShape shape1 = shapeFactory.GetShape("CIRCLE"); // implementation depends on the GetShape Factory Method
-            shape1.draw();
-
-            IShape shape2 = shapeFactory.GetShape("RECTANGLE");
-            shape2.draw();
-
-            IShape shape3 = shapeFactory.GetShape("SQUARE");
-            shape3.draw();
-
-            Console.ReadKey();
+                try {
+                    shape = shapeFactory.GetShape(shapeName);
+                    shape.draw();
+                }
+                catch (NotImplementedException e)
+                {
+                    Console.WriteLine("sorry, shape is not yet implemented.");
+                }
+            }
         }
     }
 }

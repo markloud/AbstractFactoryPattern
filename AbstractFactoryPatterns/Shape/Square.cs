@@ -6,7 +6,7 @@ namespace AbstractFactoryPatterns.Shape
     {
         public void draw()
         {
-            Console.WriteLine("Inside Square::draw() method.");
+            Console.WriteLine("\tInside Square::draw() method.");
         }
     }
 }

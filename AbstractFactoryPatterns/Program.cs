@@ -8,33 +8,34 @@ namespace AbstractFactoryPatterns
     {
         private static void Main(string[] args)
         {
-            //get shape factory
-            IDrawable shapeFactory = FactoryProducer.getFactory("SHAPE");
+            IDrawable shapeFactory = FactoryProducer.getFactory("shape");
+            IDrawable colorFactory = FactoryProducer.getFactory("color");
+            IShape shape;
+            IColor color;
+            string shapeName;
+            string colorName;
 
-            IShape shape1 = shapeFactory.GetShape("CIRCLE");
-            shape1.draw();
+            while (true)
+            {
+                Console.Write("Enter what shape to put on canvass: ");
+                shapeName = Console.ReadLine();
+                Console.Write("Enter what color to put on shape: ");
+                colorName = Console.ReadLine();
 
-            IShape shape2 = shapeFactory.GetShape("RECTANGLE");
-            shape2.draw();
+                try
+                {
+                    shape = shapeFactory.GetShape(shapeName);
+                    color = colorFactory.GetColor(colorName);
+                    shape.draw();
+                    color.fill();
+                }
+                catch (NotImplementedException e)
+                {
+                    Console.WriteLine("sorry, this is not yet implemented.");
+                }
 
-            IShape shape3 = shapeFactory.GetShape("SQUARE");
-            shape3.draw();
-
-            Console.WriteLine();
-
-            //get color factory
-            IDrawable colorFactory = FactoryProducer.getFactory("COLOR");
-
-            IColor color1 = colorFactory.GetColor("RED");
-            color1.fill();
-
-            IColor color2 = colorFactory.GetColor("Green");
-            color2.fill();
-
-            IColor color3 = colorFactory.GetColor("BLUE");
-            color3.fill();
-
-            Console.ReadKey();
+                Console.WriteLine();
+            }
         }
     }
 }
